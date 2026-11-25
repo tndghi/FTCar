@@ -224,3 +224,4 @@
     <footer class="site-footer"><div class="footer-inner"><span>© {{ now()->year }} FTCars · Showroom xe</span><a href="{{ route('admin.login') }}">Quản trị showroom</a></div></footer>
 </body>
 </html>
+<!-- nguoi fu tho toi day -->

@@ -45,6 +45,7 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php -d memory_limit=384M -d upload_max_filesize=75M -d post_max_size=90M -S 127.0.0.1:8000 -t public server.php\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
+        "serve": "php -d memory_limit=384M -d upload_max_filesize=75M -d post_max_size=90M -S 127.0.0.1:8000 -t public server.php",
         "serve:uploads": "php -d memory_limit=384M -d upload_max_filesize=75M -d post_max_size=90M -S 127.0.0.1:8000 -t public server.php",
         "test": [
             "@php artisan config:clear --ansi @no_additional_args",
