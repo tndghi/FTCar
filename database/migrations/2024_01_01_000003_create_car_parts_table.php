@@ -8,6 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('car_parts')) {
+            $hasUniquePartsIndex = collect(Schema::getIndexes('car_parts'))->contains(
+                fn (array $index) => $index['unique'] && $index['columns'] === ['car_id', 'object_name'],
+            );
+
+            if (! $hasUniquePartsIndex) {
+                Schema::table('car_parts', function (Blueprint $table) {
+                    $table->unique(['car_id', 'object_name']);
+                });
+            }
+
+            return;
+        }
+
         Schema::create('car_parts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('car_id')->constrained()->cascadeOnDelete();

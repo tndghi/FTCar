@@ -43,7 +43,6 @@ class Car extends Model
         return $this->hasMany(Order::class);
     }
 
-    // Scope tiện dùng cho trang chủ / danh sách xe
     public function scopePublished($query)
     {
         return $query->where('status', 'published');

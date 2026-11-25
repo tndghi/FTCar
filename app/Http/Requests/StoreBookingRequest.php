@@ -8,7 +8,7 @@ class StoreBookingRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // cho phép cả khách chưa đăng nhập đặt lịch, tuỳ bạn siết lại nếu cần
+        return true; // Guest bookings are supported.
     }
 
     public function rules(): array

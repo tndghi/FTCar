@@ -9,10 +9,6 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    /**
-     * GET / — trang chủ, danh sách xe + tìm kiếm/lọc.
-     * Cùng logic lọc như Api\CarController::index() nhưng trả về Blade thay vì JSON.
-     */
     public function index(Request $request): View
     {
         $query = Car::query()
@@ -47,10 +43,12 @@ class HomeController extends Controller
 
         $cars = $query->paginate(9)->withQueryString();
         $categories = CarCategory::orderBy('name')->get();
+        $featuredCar = Car::published()->latest()->first();
 
         return view('home', [
             'cars' => $cars,
             'categories' => $categories,
+            'featuredCar' => $featuredCar,
             'filters' => $request->only(['search', 'category', 'min_price', 'max_price', 'sort']),
         ]);
     }

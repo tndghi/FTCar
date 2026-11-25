@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Admin showroom
+
+The admin area is available at `/admin/login`. Configure `ADMIN_NAME`, `ADMIN_EMAIL`, and a unique `ADMIN_PASSWORD` of at least 12 characters in `.env`. On a fresh database, run `php artisan db:seed` to create the admin account and initial vehicle category; for an existing database, run `php artisan db:seed --class=AdminUserSeeder`. Uploaded vehicle photos and `.glb` models use the public storage disk; run `php artisan storage:link` to serve them. Use `composer dev` or `composer run serve:uploads` for local serving with PHP limits sized for uploads up to 75 MB.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
