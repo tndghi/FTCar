@@ -223,4 +223,5 @@
 
     <footer class="site-footer"><div class="footer-inner"><span>© <?php echo e(now()->year); ?> FTCars · Showroom xe</span><a href="<?php echo e(route('admin.login')); ?>">Quản trị showroom</a></div></footer>
 </body>
-</html><?php /**PATH C:\laravel-projects\Web-Ban-Xe\resources\views/home.blade.php ENDPATH**/ ?>
+</html>
+<!-- nguoi fu tho toi day --><?php /**PATH C:\laravel-projects\Web-Ban-Xe\resources\views/home.blade.php ENDPATH**/ ?>

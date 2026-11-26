@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', $category->exists ? 'Sửa danh mục' : 'Thêm danh mục'); ?>
 <?php $__env->startSection('section', 'Danh mục xe'); ?>
 

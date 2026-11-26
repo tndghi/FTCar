@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Quản lý xe'); ?>
 <?php $__env->startSection('section', 'Danh sách xe'); ?>
 

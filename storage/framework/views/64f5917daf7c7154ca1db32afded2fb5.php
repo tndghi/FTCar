@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Lịch hẹn xem xe'); ?>
 <?php $__env->startSection('section', 'Lịch hẹn'); ?>
 

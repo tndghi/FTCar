@@ -9,7 +9,7 @@
 
 ## Admin showroom
 
-The admin area is available at `/admin/login`. Configure `ADMIN_NAME`, `ADMIN_EMAIL`, and a unique `ADMIN_PASSWORD` of at least 12 characters in `.env`. On a fresh database, run `php artisan db:seed` to create the admin account and initial vehicle category; for an existing database, run `php artisan db:seed --class=AdminUserSeeder`. Uploaded vehicle photos and `.glb` models use the public storage disk; run `php artisan storage:link` to serve them. Start the server with `composer serve` (or the VS Code task “FTCars: Serve (75 MB GLB)”) for PHP limits sized for 75 MB uploads. Do not use plain `php artisan serve`, which starts a child process with PHP's default upload limits.
+The admin area is available at `/admin/login`. Configure `ADMIN_NAME`, `ADMIN_EMAIL`, and a unique `ADMIN_PASSWORD` of at least 12 characters in `.env`. On a fresh database, run `php artisan db:seed` to create the admin account and initial vehicle category; for an existing database, run `php artisan db:seed --class=AdminUserSeeder`. Uploaded vehicle photos and `.glb` models use the public storage disk; run `php artisan storage:link` to serve them. The project-local `php/ftcars.ini` sets the 75 MB file limit, 90 MB request limit, and 384 MB memory limit. Use `composer serve`, `composer dev`, or the VS Code task “FTCars: Serve (75 MB GLB via Artisan)” to run `php artisan serve` with those project-only settings and LAN binding. For another device on the same Wi-Fi, open `http://<server-LAN-IP>:8000`; set `APP_URL` to that same address so photos and GLB files resolve.
 
 ## About Laravel
 

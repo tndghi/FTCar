@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', $car->exists ? 'Sửa xe' : 'Thêm xe'); ?>
 <?php $__env->startSection('section', 'Danh sách xe'); ?>
 
