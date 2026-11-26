@@ -8,6 +8,7 @@ use App\Models\CarCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -52,6 +53,40 @@ class AdminManagementTest extends TestCase
         $car = Car::where('slug', 'test-suv')->firstOrFail();
         $this->assertTrue($car->has_3d_model);
         $this->assertTrue(Storage::disk('public')->exists($car->model_3d_path));
+    }
+
+    public function test_admin_can_change_password_after_confirming_the_current_password(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin', 'password' => 'old-password']);
+
+        $this->actingAs($admin)
+            ->get(route('admin.password.edit'))
+            ->assertOk()
+            ->assertSee('Đổi mật khẩu admin');
+
+        $this->put(route('admin.password.update'), [
+            'current_password' => 'old-password',
+            'password' => 'new-password',
+            'password_confirmation' => 'new-password',
+        ])->assertRedirect(route('admin.password.edit'))
+            ->assertSessionHas('success', 'Mật khẩu admin đã được cập nhật.');
+
+        $this->assertTrue(Hash::check('new-password', $admin->fresh()->password));
+    }
+
+    public function test_admin_cannot_change_password_with_an_incorrect_current_password(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin', 'password' => 'old-password']);
+
+        $this->actingAs($admin)
+            ->put(route('admin.password.update'), [
+                'current_password' => 'incorrect-password',
+                'password' => 'new-password',
+                'password_confirmation' => 'new-password',
+            ])
+            ->assertSessionHasErrors('current_password');
+
+        $this->assertTrue(Hash::check('old-password', $admin->fresh()->password));
     }
 
     public function test_admin_can_create_and_edit_categories_with_a_slug_from_the_name(): void
