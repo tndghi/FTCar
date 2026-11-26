@@ -134,6 +134,7 @@
         <a class="nav-link {{ request()->routeIs('admin.cars.*') ? 'active' : '' }}" href="{{ route('admin.cars.index') }}"><span class="nav-icon">▣</span> Danh sách xe</a>
         <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}"><span class="nav-icon">▤</span> Danh mục xe</a>
         <a class="nav-link {{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}"><span class="nav-icon">◷</span> Lịch hẹn</a>
+        <a class="nav-link {{ request()->routeIs('admin.password.*') ? 'active' : '' }}" href="{{ route('admin.password.edit') }}"><span class="nav-icon">⚿</span> Đổi mật khẩu admin</a>
         <div class="sidebar-bottom">
             <div class="admin-name">{{ auth()->user()->name }}<small>{{ auth()->user()->email }}</small></div>
             <form method="POST" action="{{ route('admin.logout') }}">

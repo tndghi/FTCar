@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CarCategoryController as AdminCarCategoryController;
 use App\Http\Controllers\Admin\CarController as AdminCarController;
+use App\Http\Controllers\Admin\PasswordController as AdminPasswordController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,6 @@ Route::prefix('admin')->name('admin.')->middleware(AdminMiddleware::class)->grou
     Route::resource('categories', AdminCarCategoryController::class)->except('show');
     Route::get('/bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
     Route::patch('/bookings/{booking}', [AdminBookingController::class, 'update'])->name('bookings.update');
+    Route::get('/password', [AdminPasswordController::class, 'edit'])->name('password.edit');
+    Route::put('/password', [AdminPasswordController::class, 'update'])->name('password.update');
 });
